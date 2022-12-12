@@ -5,7 +5,7 @@ var dbConn  = require('../lib/db');
 // display books page
 router.get('/', function(req, res, next) {
       
-    dbConn.query('SELECT * FROM books ORDER BY id desc',function(err,rows)     {
+    dbConn.query('SELECT * FROM books ORDER BY id ASC',function(err,rows)     {
  
         if(err) {
             req.flash('error', err);
@@ -34,7 +34,7 @@ router.post('/add', function(req, res, next) {
     let author = req.body.author;
     let errors = false;
 
-    if(name.length === 0 || author.length === 0) {
+    if(names.length === 0 || author.length === 0) {
         errors = true;
 
         // set flash message

@@ -1,17 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Books</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body class="container" style="margin-top: 50px;">
-    <%- include('../partials/header'); %>
-<div class="relative md:ml-64 bg-blueGray-50">
-     
-
-
+<%- include('../partials/header'); %>
+<div class="container mx-auto">
     <% if (messages.success) { %>
     <div class="alert alert-success" role="alert"><%- messages.success %></div>
     <% } %>
@@ -20,43 +8,48 @@
     <div class="alert alert-danger" role="alert"><%- messages.error %></div>
     <% } %>
 
-    <div class="card"> 
-        <div class="card-header">
-            <ul class="nav nav-pills w-100">
-                <li class="nav-pill active">
-                    <a class="nav-link">Agregar nuevo libro</a>
-                </li>
-                <li class="nav-pill ml-auto">
-                    <a class="nav-link active" href="/books/add">Add Book</a>
-                </li>
-            </ul>
-        </div>
+    <div class="flex justify-between mt-4 mb-4">
+        <h1 class="text-xl font-bold">Lista de libros</h1>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/books/add">Add Book</a>
+    </div>
     <div class="card-body">
         
         <% if(data.length) { %>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Author</th>
-                    <th width="200px">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% for(var i = 0; i< data.length; i++) { %>
-                <tr>
-                    <th scope="row"><%= (i+1) %></th>
-                    <td><%= data[i].name%></td>
-                    <td><%= data[i].author%></td>
-                    <td>
-                        <a class="btn btn-success edit" href="../books/edit/<%=data[i].id%>">Edit</a>                       
-                        <a class="btn btn-danger delete" onclick="return alert('Are You sure?')" href="../books/delete/<%=data[i].id%>">Delete</a>                       
-                    </td>
-                </tr>
-            <% } %>
-            </tbody>
-        </table>
+            <div class="flex flex-col">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                      <table class="min-w-full">
+                        <thead class="border-b bg-gray-800">
+                          <tr>
+                            <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+                            <th scope="col" class="text-sm font-medium text-white px-6 py-4">Name</th>
+                            <th scope="col" class="text-sm font-medium text-white px-6 py-4">Author</th>
+                            <th width="200px" class="text-sm font-medium text-white px-6 py-4">Action</th>
+                          </tr>
+                        </thead class="border-b">
+                        <tbody>
+                        <% for(var i = 0; i< data.length; i++) { %>
+                          <tr class="bg-white border-b">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= (i+1) %></td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <%= data[i].name%>
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <%= data[i].author%>
+                            </td>
+                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../books/edit/<%=data[i].id%>">Edit</a>                       
+                                <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="return alert('Are You sure?')" href="../books/delete/<%=data[i].id%>">Del</a>
+                            </td>
+                          </tr class="bg-white border-b">
+                        <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
         <% } %>
         
         <!-- if result is empty -->
@@ -66,6 +59,6 @@
 
         </div>
     </div>
-
+</div>
 </body>
 </html>

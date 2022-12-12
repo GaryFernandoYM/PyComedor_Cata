@@ -1,0 +1,72 @@
+<%- include('../partials/header'); %>
+<div class="relative md:ml-64 bg-blueGray-50">
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="flex justify-around mt-4 mb-4">
+        <h1 class="text-xl font-bold">Lista de Trabajadores</h1>
+        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="/workers/add">Add workers</a>
+    </div>
+    <div class="card-body">
+        
+        <% if(data.length) { %>
+            <div class="flex justify-around ">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+        <table class="content-center">
+             
+            <thead class="border-b bg-gray-800">
+                <tr>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nombre</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Apellido Paterno</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Apellido Materno</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Direccion</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">DNi</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Telefono</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">....</th>
+                </tr>
+            </thead class="border-b">
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr class="bg-white border-b">
+                    <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= (i+1) %></th>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_nombre%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_ap_paterno%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_ap_materno%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_direccion%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_nro_documento%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_telefono%></td>
+                    
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../workers/edit/<%=data[i].tra_id%>">Editt</a>                       
+                        <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="return alert('Are You sure?')" href="../workers/delete/<%=data[i].tra_id%>">Del</a>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
+        
+        
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+            <p class="text-center">No productos found!</p>
+        <% } %>
+
+        </div>
+    
+</div>
+</body>
+</html>

@@ -1,37 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Edit Book</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body class="container" style="margin-top: 50px;">
-
+<%- include('../partials/header'); %>
+<div class="container mx-auto">
 	<% if (messages.error) { %>
 	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
 	<% } %>
 
-    <div class="card"> 
-    	<div class="card-header">
-			Edit Book
-		</div>
-        <div class="card-body">
-            <form action="/books/update/<%= id %>" method="post">
-                <div class="form-group">
-                    <label>Name:</label>
-                    <input type="text" class="form-control" name="name" value="<%= name %>" autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <label>Author:</label>
-                    <input type="text" class="form-control" name="author" value="<%= author %>" autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-info" value="Update"/>
-                </div>
-            </form>
+    <h1 class="font-bold text-xl mt-4 mb-4">Actualizar Libro</h1>
+    <form class="w-full max-w-lg" action="/books/update/<%= id %>" method="post">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Name
+            </label>
+            <input name="name" value="<%= name %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                Author
+            </label>
+            <input name="author" value="<%= author %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nombre del Autor">
+          </div>
         </div>
-    </div>
-
+        <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Editar"/>
+      </form>
+</div>
 </body>
 </html>
