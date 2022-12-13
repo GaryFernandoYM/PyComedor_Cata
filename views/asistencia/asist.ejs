@@ -1,0 +1,75 @@
+<%- include('../partials/header'); %>
+<div class="relative md:ml-64 bg-blueGray-50">
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    
+<div class="justify-center bg-blueGray-50 ">
+
+    <div class="container mx-auto">
+        <div class="pt-10 max-w-xl p-5 mx-auto my-10 bg-white rounded-md shadow-sm">
+          <div class="text-center">
+            <h1 class="my-3 text-3xl font-semibold text-gray-700">Registro de asistencia</h1>
+            <p class="text-gray-400">Personal encarcado del comedor.</p>
+          </div>
+          <div>
+            <form action="/asistencia/asist" method="post">
+              
+                  <div class="mb-6">
+                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Nombres</label>
+                    <select name="tipo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="Juan Fernando Pérez del Corral.">Juan Fernando Pérez del Corral.</option>
+                        <option value="Valentina Laverde de la Rosa.">Valentina Laverde de la Rosa.</option>
+                        <option value="Óscar de la Renta.">Óscar de la Renta.</option>
+                        <option value="Sara Teresa Sánchez del Pinar.">Sara Teresa Sánchez del Pinar.</option>
+                        <option value="Efraín de las Casas Mejía.">Efraín de las Casas Mejía.</option>
+                        <option value="Julieta Ponce de León.">Julieta Ponce de León.</option>
+                        
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                      </div>
+                  </div>
+                  <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Fecha</label>
+                <div class="flex items-center justify-between">
+                    <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+                      <input type="date"
+                        class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="Select a date" />  
+                    </div>
+                  </div>
+              <div class="mb-6">
+                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Cargo</label>
+                <select name="tipo" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="Adminsitrador">Adminsitrador</option>
+                    <option value="Chef">Chef</option>
+                    <option value="SubChef">SubChef</option>
+                    <option value="asistente1">asistente1</option>
+                    <option value="Pago">asistente2</option>
+                    <option value="asistente3">asistente3</option>
+                    
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
+              </div>
+              
+              <div class="mb-6">
+                <button
+                  type="submit"
+                  class="w-full px-2 py-4 text-white bg-indigo-500 rounded-md  focus:bg-indigo-600 focus:outline-none"
+                >
+                  Registrar
+                </button>
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+</div>
+</div>
