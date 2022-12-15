@@ -1,0 +1,49 @@
+<%- include('../partials/header'); %>
+<div class="relative md:ml-64 bg-blueGray-50 justify-center">
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+
+    <h1 class="font-bold text-xl mt-4 mb-4">Actualizar Cro</h1>
+    <form class="w-full max-w-lg container mx-auto" action="/menu/update/<%= crm_id %>" method="post">
+        <div class="flex flex-wrap -mx-3 mb-6 ">
+          <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Lunes
+            </label>
+            
+            <input name="crm_Lunes" value="<%= crm_Lunes %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+            
+          </div>
+          <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Martes
+            </label>
+            <input name="crm_Martes" value="<%= crm_Martes %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+          </div>
+          <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+              Miercoles
+            </label>
+            <input name="crm_Miercoles" value="<%= crm_Miercoles %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+          </div>
+          <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Jueves
+            </label>
+            <input name="crm_Jueves" value="<%= crm_Jueves %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+          </div>
+          <div class="w-full md:w-3/5 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                Viernes
+            </label>
+            <input name="crm_Viernes" value="<%= crm_Viernes %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+          </div>
+          
+      
+        </div>
+        <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Actualizar"/>
+      </form>
+</div>
+</body>
+</html>
