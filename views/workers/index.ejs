@@ -30,7 +30,8 @@
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Direccion</th>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">DNi</th>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Telefono</th>
-                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">....</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">cargo</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">accion</th>
                 </tr>
             </thead class="border-b">
             <tbody>
@@ -43,6 +44,7 @@
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_direccion%></td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_nro_documento%></td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].tra_telefono%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].cargo%></td>
                     
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../workers/edit/<%=data[i].tra_id%>">Editt</a>                       

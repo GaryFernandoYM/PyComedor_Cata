@@ -27,7 +27,9 @@ router.get('/add', function(req, res, next) {
         tra_ap_materno:'',  
         tra_direccion:'', 
         tra_nro_documento:'', 
-        tra_telefono:''
+        tra_telefono:'',
+        cargo:''
+        
    })
 })
 
@@ -40,10 +42,11 @@ router.get('/add', function(req, res, next) {
     let tra_direccion = req.body.tra_direccion;
     let tra_nro_documento = req.body.tra_nro_documento;
     let tra_telefono = req.body.tra_telefono;
+    let cargo = req.body.cargo;
 
     let errors = false;
 
-    if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0) {
+    if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0|| cargo.length === 0) {
     errors = true;
 
         // set flash message
@@ -55,7 +58,8 @@ router.get('/add', function(req, res, next) {
              tra_ap_materno:tra_ap_materno,
              tra_direccion:tra_direccion,
              tra_nro_documento:tra_nro_documento,
-             tra_telefono:tra_telefono
+             tra_telefono:tra_telefono,
+             cargo:cargo
        })
     }
 
@@ -68,7 +72,8 @@ var form_data = {
     tra_ap_materno:tra_ap_materno,
     tra_direccion:tra_direccion,
     tra_nro_documento:tra_nro_documento,
-    tra_telefono:tra_telefono
+    tra_telefono:tra_telefono,
+    cargo:cargo
          }
         
          // insert query
@@ -84,7 +89,9 @@ var form_data = {
                     tra_ap_materno: form_data.tra_ap_materno,
                     tra_direccion: form_data.tra_direccion, 
                     tra_nro_documento: form_data.tra_nro_documento, 
-                    tra_telefono: form_data.tra_telefono                 
+                    tra_telefono: form_data.tra_telefono, 
+                    cargo: form_data.cargo                 
+                
                  })
              } else {                
                  req.flash('success', 'workers successfully added');
@@ -118,7 +125,8 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
                  tra_ap_materno: rows[0].tra_ap_materno,
                  tra_direccion: rows[0].tra_direccion,
                  tra_nro_documento: rows[0].tra_nro_documento,
-                 tra_telefono: rows[0].tra_telefono
+                 tra_telefono: rows[0].tra_telefono,
+                 cargo: rows[0].cargo
                  
              })
          }
@@ -134,10 +142,11 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
      let tra_direccion = req.body.tra_direccion;
      let tra_nro_documento = req.body.tra_nro_documento;
      let tra_telefono = req.body.tra_telefono;
+     let cargo = req.body.cargo;
      
      let errors = false;
 
-     if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0) {
+     if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0|| cargo.length === 0) {
         errors = true;
         
          // set flash message
@@ -150,7 +159,9 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
              tra_ap_materno: tra_ap_materno,
              tra_direccion: tra_direccion,
              tra_nro_documento: tra_nro_documento,
-             tra_telefono: tra_telefono
+             tra_telefono: tra_telefono,
+             cargo: cargo
+
          })
      }
 
@@ -163,7 +174,9 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
             tra_ap_materno: tra_ap_materno,
             tra_direccion: tra_direccion,
             tra_nro_documento: tra_nro_documento,
-            tra_telefono: tra_telefono
+            tra_telefono: tra_telefono,
+            cargo: cargo
+
          }
          // update query
          dbConn.query('UPDATE trabajador SET ? WHERE tra_id = ' + tra_id, form_data, function(err, result) {
@@ -179,7 +192,9 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
                      tra_ap_materno: form_data.tra_ap_materno,
                      tra_direccion: tra_direccion,
                      tra_nro_documento: tra_nro_documento,
-                     tra_telefono: tra_telefono
+                     tra_telefono: tra_telefono,
+                     cargo: cargo
+
                  })
              } else {
                  req.flash('success', 'workers successfully updated');
