@@ -825,6 +825,9 @@ video {
 .justify-around {
   justify-content: space-around;
 }
+.justify-evenly {
+  justify-content: space-evenly;
+}
 .self-center {
   align-self: center;
 }
@@ -1071,6 +1074,9 @@ video {
 }
 .pl-10 {
   padding-left: 2.5rem;
+}
+.pt-20 {
+  padding-top: 5rem;
 }
 .text-left {
   text-align: left;

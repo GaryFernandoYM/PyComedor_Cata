@@ -39,9 +39,9 @@ router.post('/dashboard', function(req, res, next) {
 router.get('/asistencia', function(req, res, next) {
   res.render('asistencia/asist');
 });
-router.get('/sales', function(req, res, next) {
-  res.render('sales/index');
-});
+// router.get('/sales', function(req, res, next) {
+//   res.render('sales/index');
+// });
 
 
 router.get('/main', function(req, res, next) {

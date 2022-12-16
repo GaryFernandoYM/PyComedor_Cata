@@ -48,6 +48,7 @@ app.use('/books', booksRouter);
 app.use('/products', productsRouter);
 app.use('/workers', workersRouter);
 app.use('/menu', menuRouter);
+app.use('/sales', salesRouter);
 //app.use('/sales', salesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
