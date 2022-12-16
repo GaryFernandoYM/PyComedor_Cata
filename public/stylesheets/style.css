@@ -1532,6 +1532,10 @@ video {
     width: 50%;
   }
 
+  .md\:w-3\/5 {
+    width: 60%;
+  }
+
   .md\:w-auto {
     width: auto;
   }
