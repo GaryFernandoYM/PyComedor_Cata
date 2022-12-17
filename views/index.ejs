@@ -18,28 +18,32 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
     />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
     <title>CATA | Comedor</title>
   </head>
-  <body class="text-gray-800 antialiased">
+  <body class=" text-gray-800 antialiased">
     <nav
       class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 "
     >
       <div
-        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+        class="container px-4 mx-auto md:max-xl:flex flex flex-wrap items-center justify-between"
       >
         <div
           class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
         >
           <a
-            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+            class="text-sm font-bold leading-relaxed inline-block mr-4 py-0 whitespace-nowrap uppercase text-blue-500"
             href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
-            >CATA</a
+            >COMEDOR</a
           ><button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            class="cursor-pointer text-xl leading-none px-3 py-0 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
             type="button"
             onclick="toggleNavbar('example-collapse-navbar')"
           >
-            <i class="text-white fas fa-bars"></i>
+            <i class="text-blue-500 fas fa-bars"></i>
           </button>
         </div>
         <div
@@ -105,16 +109,16 @@
         </div>
       </section>
       <section class="relative">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4"> 
           <div
             class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
           >
-            <div class="px-6">
+            <div class="px-6 lg:mr-1 lg:mb-0 ml-3 mb-3 max-sm:hidden">
               <div class="flex flex-wrap justify-center">
                 <div
                   class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center"
                 >
-                  <div class="relative">
+                  <div class="relative flex flex-wrap justify-center">
                     <img
                       alt="..."
                       src="images/team-3-800x800.jpg"
@@ -128,7 +132,7 @@
                 >
                   
                 </div>
-                <div class="w-full lg:w-4/12 px-4 lg:order-1">
+                <div class="w-full lg:w-4/12 px-4 lg:order-1 md:max-w-2xl">
                   <div class="flex justify-center py-4 lg:pt-4 pt-8">
                     
                     
@@ -136,27 +140,32 @@
                   </div>
                 </div>
               </div>
-              <div class="text-center mt-12">
-                <h3
-                  class="text-4xl font-semibold leading-normal text-gray-800 mb-2"
-                >
-                  Menu de la semana
-                </h3>
-               
+              <div class="text-center mt-12 grid place-items-center lg:mr-1 lg:mb-0 ml-3 mb-3">
                 
                 
               </div>
-              <div class="mt-10 py-10 border-full border-gray-300 text-center">
-                <div class="flex flex-wrap justify-center">
-               
-                </div>
-              </div>
+           
             </div>
+            <div class="mt-10 py-10 border-full border-gray-300 text-center px-6 lg:mr-1 lg:mb-0 ml-3 mb-3 max-sm max-sm:xl\:mb-auto">
+              <div class="flex flex-wrap justify-center ">
+              
+                <li class="flex items-center">
+                  <a href="/menu"
+                    class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
+                    type="button"
+                    style="transition: all 0.15s ease 0s;"
+                  >
+                  <i class="fas fa-sign-in-alt"></i> Ver Menu
+                  </a>
+                </li>
+              </div>
+            
+            </div> 
           </div>
         </div>
       </section>
     </main>
-  
+    
   </body>
   <script>
     function toggleNavbar(collapseID) {

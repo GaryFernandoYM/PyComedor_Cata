@@ -107,5 +107,8 @@ router.get('/clientes', function(req, res, next) {
       }
   });
 });
+//menu
+
+
 
 module.exports = router;
