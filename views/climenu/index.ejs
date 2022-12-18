@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<div class="">
+
+
+    <div class="flex justify-center mt-4 mb-4">
+        <h1 class="text-xl font-bold">Cronograma del Almuerzo Cataino</h1>
+        
+    </div>
+    
+    
+    <div class="card-body">
+        
+        <% if(data.length) { %>
+            <div class="flex justify-center ">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                  <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="overflow-hidden">
+                        <div>
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Fecha</label>   
+                            <div class="flex items-center justify-between">
+                                <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
+                                  <input type="date"
+                                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    placeholder="Select a date" />  
+                                </div>
+                              </div>
+                        </div>
+        <table class="content-center">
+             
+            <thead class="border-b bg-gray-800">
+                <tr>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Lunes</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Martes</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Miercoles</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Jueves</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Viernes</th>
+
+                  
+                </tr>
+            </thead class="border-b">
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr class="bg-white border-b">
+                    <th class="px-6 py-4 whitespace-nowrap text-sm font-medium border-b bg-gray-800 text-white"><%= data[i].crm_tipo %></th>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].crm_Lunes%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].crm_Martes%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].crm_Miercoles%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].crm_Jueves%></td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].crm_Viernes%></td>
+                    
+                    
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+  
+                                                
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
+        
+        
+        <% } %>
+
+        </div>
+    
+</div>
+</body>
+</html>

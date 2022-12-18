@@ -25,7 +25,7 @@ router.post('/dashboard', function(req, res, next) {
         req.session.idu=rows[0]["id"];
         req.session.email=rows[0]["email"];
         req.session.loggedin = true;
-        res.redirect('/main');
+        res.redirect('/menu');
       }else{
         req.flash('error','El usuario no existe...');
         res.redirect('/login');
@@ -36,12 +36,12 @@ router.post('/dashboard', function(req, res, next) {
   
 });
 
-router.get('/asistencia', function(req, res, next) {
-  res.render('asistencia/asist');
-});
-// router.get('/sales', function(req, res, next) {
-//   res.render('sales/index');
+// router.get('/asistencia', function(req, res, next) {
+//   res.render('asistencia/asist');
 // });
+// // router.get('/sales', function(req, res, next) {
+// //   res.render('sales/index');
+// // });
 
 
 router.get('/main', function(req, res, next) {
@@ -85,30 +85,27 @@ router.get('/api', function(req, res, next) {
 });
 
 
-router.get('/logout', function (req, res) {
-  req.session.destroy();
-  res.redirect("/");
-});
+// router.get('/logout', function (req, res) {
+//   req.session.destroy();
+//   res.redirect("/");
+// });
 
-router.get('/clientes', function(req, res, next) {
-  dbConn.query('SELECT * FROM clientes WHERE activo=1',function(err,rows)     {
-      if(err) {
-          req.flash('error', err);
-          // render to views/books/index.ejs
-          res.render('clientes/list',{data:''});   
-          console.log(rows);
-      } else {
-          // render to views/books/index.ejs
-          res.locals.idu=req.session.idu;
-          res.locals.user=req.session.user;
-          res.locals.email=req.session.email;
+// router.get('/clientes', function(req, res, next) {
+//   dbConn.query('SELECT * FROM clientes WHERE activo=1',function(err,rows)     {
+//       if(err) {
+//           req.flash('error', err);
+//           // render to views/books/index.ejs
+//           res.render('clientes/list',{data:''});   
+//           console.log(rows);
+//       } else {
+//           // render to views/books/index.ejs
+//           res.locals.idu=req.session.idu;
+//           res.locals.user=req.session.user;
+//           res.locals.email=req.session.email;
 
-          res.render('clientes/list',{data:rows});
-      }
-  });
-});
-//menu
-
-
+//           res.render('clientes/list',{data:rows});
+//       }
+//   });
+// });
 
 module.exports = router;
