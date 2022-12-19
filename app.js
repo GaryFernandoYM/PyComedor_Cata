@@ -19,6 +19,8 @@ var salesRouter = require('./routes/sales');
 var menuRouter = require('./routes/menu');
 var crudusersRouter = require('./routes/crudusers');
 var climenuRouter = require('./routes/climenu');
+var asistenciaRouter = require('./routes/asistencia');
+
 
 var app = express();
 
@@ -53,7 +55,7 @@ app.use('/menu', menuRouter);
 app.use('/sales', salesRouter);
 app.use('/crudusers', crudusersRouter);
 app.use('/climenu', climenuRouter);
-
+app.use('/asistencia', asistenciaRouter);
 //app.use('/sales', salesRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
