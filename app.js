@@ -11,8 +11,6 @@ var connection  = require('./lib/db');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cursosRouter = require('./routes/cursos');
-var booksRouter = require('./routes/books');
 var productsRouter = require('./routes/products');
 var workersRouter = require('./routes/workers');
 var salesRouter = require('./routes/sales');
@@ -47,8 +45,6 @@ app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/cursos', cursosRouter);
-app.use('/books', booksRouter);
 app.use('/products', productsRouter);
 app.use('/workers', workersRouter);
 app.use('/menu', menuRouter);

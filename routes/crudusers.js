@@ -22,13 +22,11 @@ router.get('/', function(req, res, next) {
 router.get('/add', function(req, res, next) {    
     // render to add.ejs
     res.render('crudusers/add', {
-        tra_nombre: '',
-        tra_ap_paterno: '',
-        tra_ap_materno:'',  
-        tra_direccion:'', 
-        tra_nro_documento:'', 
-        tra_telefono:'',
-        cargo:''
+        nombre: '',
+        email: '',
+        password:'',  
+        Cargo:''
+        
         
    })
 })
@@ -36,30 +34,26 @@ router.get('/add', function(req, res, next) {
 //add a new crudusers
  router.post('/add', function(req, res, next) {    
 
-    let tra_nombre = req.body.tra_nombre;
-    let tra_ap_paterno = req.body.tra_ap_paterno;
-    let tra_ap_materno = req.body.tra_ap_materno;
-    let tra_direccion = req.body.tra_direccion;
-    let tra_nro_documento = req.body.tra_nro_documento;
-    let tra_telefono = req.body.tra_telefono;
-    let cargo = req.body.cargo;
+    let nombre = req.body.nombre;
+    let email = req.body.email;
+    let password = req.body.password;
+    let Cargo = req.body.Cargo;
+    
 
     let errors = false;
 
-    if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0|| cargo.length === 0) {
+    if(nombre.length === 0 || email.length === 0 || password.length === 0 || Cargo.length === 0) {
     errors = true;
 
         // set flash message
-        req.flash('error', "Please enter name and author");
+        req.flash('error', "Casillero Vacio");
         // render to add.ejs with flash message
          res.render('crudusers/add', {
-             tra_nombre:tra_nombre,
-             tra_ap_paterno:tra_ap_paterno,
-             tra_ap_materno:tra_ap_materno,
-             tra_direccion:tra_direccion,
-             tra_nro_documento:tra_nro_documento,
-             tra_telefono:tra_telefono,
-             cargo:cargo
+             nombre:nombre,
+             email:email,
+             password:password,
+             Cargo:Cargo
+             
        })
     }
 
@@ -67,30 +61,26 @@ router.get('/add', function(req, res, next) {
      if(!errors) {
 
 var form_data = {
-    tra_nombre:tra_nombre,
-    tra_ap_paterno:tra_ap_paterno,
-    tra_ap_materno:tra_ap_materno,
-    tra_direccion:tra_direccion,
-    tra_nro_documento:tra_nro_documento,
-    tra_telefono:tra_telefono,
-    cargo:cargo
+    nombre:nombre,
+    email:email,
+    password:password,
+    Cargo:Cargo
+  
          }
         
          // insert query
-         dbConn.query('INSERT INTO trabajador SET ?', form_data, function(err, result) {
+         dbConn.query('INSERT INTO usuarios SET ?', form_data, function(err, result) {
              //if(err) throw err
              if (err) {
                  req.flash('error', err)
                  
                  // render to add.ejs
                  res.render('crudusers/add', {
-                    tra_nombre: form_data.tra_nombre,
-                    tra_ap_paterno: form_data.tra_ap_paterno,
-                    tra_ap_materno: form_data.tra_ap_materno,
-                    tra_direccion: form_data.tra_direccion, 
-                    tra_nro_documento: form_data.tra_nro_documento, 
-                    tra_telefono: form_data.tra_telefono, 
-                    cargo: form_data.cargo                 
+                    nombre: form_data.nombre,
+                    email: form_data.email,
+                    password: form_data.password,
+                    Cargo: form_data.Cargo 
+                                   
                 
                  })
              } else {                
@@ -102,16 +92,16 @@ var form_data = {
 })
 
 // display edit crudusers page
-router.get('/edit/(:tra_id)', function(req, res, next) {
+router.get('/edit/(:id)', function(req, res, next) {
 
-   let tra_id = req.params.tra_id;
+   let id = req.params.id;
    
-  dbConn.query('SELECT * FROM trabajador WHERE tra_id = ' + tra_id, function(err, rows, fields) {
+  dbConn.query('SELECT * FROM usuarios WHERE id = ' + id, function(err, rows, fields) {
        if(err) throw err
          
          // if user not found
          if (rows.length <= 0) {
-             req.flash('error', 'crudusers not found with tra_id = ' + tra_id)
+             req.flash('error', 'crudusers not found with id = ' + id)
              res.redirect('/crudusers')
          }
          // if crudusers found
@@ -119,48 +109,38 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
              // render to edit.ejs
              res.render('crudusers/edit', {
                  title: 'Edit crudusers', 
-                 tra_id: rows[0].tra_id,
-                 tra_nombre: rows[0].tra_nombre,
-                 tra_ap_paterno: rows[0].tra_ap_paterno,
-                 tra_ap_materno: rows[0].tra_ap_materno,
-                 tra_direccion: rows[0].tra_direccion,
-                 tra_nro_documento: rows[0].tra_nro_documento,
-                 tra_telefono: rows[0].tra_telefono,
-                 cargo: rows[0].cargo
-                 
+                 id: rows[0].id,
+                 nombre: rows[0].nombre,
+                 email: rows[0].email,
+                 password: rows[0].password,
+                 Cargo: rows[0].Cargo
              })
          }
      })
  })
 // update crudusers data
- router.post('/update/:tra_id', function(req, res, next) {
+ router.post('/update/:id', function(req, res, next) {
 
-     let tra_id = req.params.tra_id;
-     let tra_nombre = req.body.tra_nombre;
-     let tra_ap_paterno = req.body.tra_ap_paterno;
-     let tra_ap_materno = req.body.tra_ap_materno;
-     let tra_direccion = req.body.tra_direccion;
-     let tra_nro_documento = req.body.tra_nro_documento;
-     let tra_telefono = req.body.tra_telefono;
-     let cargo = req.body.cargo;
+     let id = req.params.id;
+     let nombre = req.body.nombre;
+     let email = req.body.email;
+     let password = req.body.password;
+     let Cargo = req.body.Cargo;
      
      let errors = false;
 
-     if(tra_nombre.length === 0 || tra_ap_paterno.length === 0 || tra_ap_materno.length === 0 || tra_direccion.length === 0|| tra_nro_documento.length === 0|| tra_telefono.length === 0|| cargo.length === 0) {
+     if(nombre.length === 0 || email.length === 0 || password.length === 0 || Cargo.length === 0) {
         errors = true;
         
          // set flash message
-         req.flash('error', "Please enter name and author");
+         req.flash('error', "Casillero Vacio");
          // render to add.ejs with flash message
          res.render('crudusers/edit', {
-             tra_id: req.params.tra_id,
-             tra_nombre: tra_nombre,
-             tra_ap_paterno: tra_ap_paterno,
-             tra_ap_materno: tra_ap_materno,
-             tra_direccion: tra_direccion,
-             tra_nro_documento: tra_nro_documento,
-             tra_telefono: tra_telefono,
-             cargo: cargo
+             id: req.params.id,
+             nombre: nombre,
+             email: email,
+             password: password,
+             Cargo: Cargo
 
          })
      }
@@ -169,31 +149,25 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
      if( !errors ) {   
  
          var form_data = {
-            tra_nombre: tra_nombre,
-            tra_ap_paterno: tra_ap_paterno,
-            tra_ap_materno: tra_ap_materno,
-            tra_direccion: tra_direccion,
-            tra_nro_documento: tra_nro_documento,
-            tra_telefono: tra_telefono,
-            cargo: cargo
+            nombre: nombre,
+            email: email,
+            password: password,
+            Cargo: Cargo
 
          }
          // update query
-         dbConn.query('UPDATE trabajador SET ? WHERE tra_id = ' + tra_id, form_data, function(err, result) {
+         dbConn.query('UPDATE usuarios SET ? WHERE id = ' + id, form_data, function(err, result) {
              //if(err) throw err
              if (err) {
                  // set flash message
                  req.flash('error', err)
                  // render to edit.ejs
                  res.render('crudusers/edit', {
-                     tra_id: req.params.tra_id,
-                     tra_nombre: form_data.tra_nombre,
-                     tra_ap_paterno: form_data.tra_ap_paterno,
-                     tra_ap_materno: form_data.tra_ap_materno,
-                     tra_direccion: tra_direccion,
-                     tra_nro_documento: tra_nro_documento,
-                     tra_telefono: tra_telefono,
-                     cargo: cargo
+                     id: req.params.id,
+                     nombre: form_data.nombre,
+                     email: form_data.email,
+                     password: form_data.password,
+                     Cargo: Cargo
 
                  })
              } else {
@@ -205,11 +179,11 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
  })
    
  // delete crudusers
- router.get('/delete/(:tra_id)', function(req, res, next) {
+ router.get('/delete/(:id)', function(req, res, next) {
 
-     let tra_id = req.params.tra_id;
+     let id = req.params.id;
      
-     dbConn.query('DELETE FROM trabajador WHERE tra_id = ' + tra_id, function(err, result) {
+     dbConn.query('DELETE FROM usuarios WHERE id = ' + id, function(err, result) {
          //if(err) throw err
          if (err) {
              // set flash message
@@ -218,11 +192,30 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
              res.redirect('/crudusers')
          } else {
              // set flash message
-             req.flash('success', 'crudusers successfully deleted! ID = ' + tra_id)
+             req.flash('success', 'crudusers successfully deleted! ID = ' + id)
              // redirect to crudusers page
              res.redirect('/crudusers')
          }
      })
  })
+
+
+// router.get('/search', function(req, res, next) {
+//     let nombre = req.params.nombre;
+//     let email = req.params.email;
+//     let Cargo = req.params.Cargo;
+      
+//     dbConn.query("SELECT * FROM usuarios where nombre LIKE '% " +nombre+"' ",function(err,rows)     {
+ 
+//         if(err) {
+//             req.flash('error', err);
+//             // render to views/crudusers/index.ejs
+//             res.render('crudusers',{data:''});   
+//         } else {
+//             // render to views/crudusers/index.ejs
+//             res.render('crudusers',{data:rows});
+//         }
+//     });
+// });
 
 module.exports = router;

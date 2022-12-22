@@ -1,54 +1,39 @@
 <%- include('../partials/header'); %>
-<div class="relative md:ml-64 bg-blueGray-50">
+<div class="relative flex flex-col sm:justify-center items-center bg-gray-100  md:ml-64 bg-blueGray-50">
 	<% if (messages.error) { %>
 	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
 	<% } %>
 
-    <h1 class="font-bold text-xl mt-4 mb-4">Actualizar Trabajador</h1>
-    <form class="w-full max-w-lg" action="/workers/update/<%= tra_id %>" method="post">
-        <div class="flex flex-wrap -mx-3 mb-6">
+    <h1 class="font-mono text-xl mt-4 mb-10 ">Actualizar Usuario</h1>
+    <form class="w-full max-w-lg" action="/crudusers/update/<%=id %>" method="post">
+        <div class="flex flex-wrap -mx-3 mb-6" ">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Nombre
             </label>
-            <input name="tra_nombre" value="<%= tra_nombre %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+            <input name="nombre" value="<%= nombre %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
           </div>
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                Apellido Paterno
+                Email
             </label>
-            <input name="tra_ap_paterno" value="<%= tra_ap_paterno %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+            <input name="email" value="<%= email %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
           </div>
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-              Apellido Materno
+              Password
             </label>
-            <input name="tra_ap_materno" value="<%= tra_ap_materno %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                Direccion
-            </label>
-            <input name="tra_direccion" value="<%= tra_direccion %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                Dni
-            </label>
-            <input name="tra_nro_documento" value="<%= tra_nro_documento %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                Telefono
-            </label>
-            <input name="tra_telefono" value="<%= tra_telefono %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+            <input name="password" value="<%= password %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
           </div>
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Cargo
             </label>
-            <input name="cargo" value="<%= cargo %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
+            <input name="Cargo" value="<%= Cargo %>" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Titulo libro">
           </div>
+         
+       
+       
         </div>
         <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Actualizar"/>
       </form>

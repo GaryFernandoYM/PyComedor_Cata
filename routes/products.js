@@ -40,7 +40,7 @@ router.get('/add', function(req, res, next) {
     errors = true;
 
         // set flash message
-        req.flash('error', "Please enter name and author");
+        req.flash('error', "Casillero Vacio");
         // render to add.ejs with flash message
          res.render('products/add', {
              prod_nombre:prod_nombre,
@@ -119,7 +119,7 @@ router.get('/edit/(:prod_id)', function(req, res, next) {
          errors = true;
         
          // set flash message
-         req.flash('error', "Please enter name and author");
+         req.flash('error', "Casillero Vacio");
          // render to add.ejs with flash message
          res.render('products/edit', {
              prod_id: req.params.prod_id,

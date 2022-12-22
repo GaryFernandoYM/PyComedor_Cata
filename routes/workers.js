@@ -50,7 +50,7 @@ router.get('/add', function(req, res, next) {
     errors = true;
 
         // set flash message
-        req.flash('error', "Please enter name and author");
+        req.flash('error', "Casillero Vacio");
         // render to add.ejs with flash message
          res.render('workers/add', {
              tra_nombre:tra_nombre,
@@ -150,7 +150,7 @@ router.get('/edit/(:tra_id)', function(req, res, next) {
         errors = true;
         
          // set flash message
-         req.flash('error', "Please enter name and author");
+         req.flash('error', "Casillero Vacio");
          // render to add.ejs with flash message
          res.render('workers/edit', {
              tra_id: req.params.tra_id,

@@ -1,35 +1,145 @@
 <%- include('../partials/header'); %>
-<div class="relative md:ml-64 bg-blueGray-50">
+
+
+<div class="relative flex flex-col sm:justify-center items-center bg-green-100  md:ml-64 bg-blueGray-50">
     
 
 
-</div>
+
 <% if(data.length) { %>
     <div class="flex justify-around ">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden">
-            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Tipo</label>
-            <form action="/update" method="POST">
-                <input id="prod_id" name="prod_nombre" value="<%= data.prod_id %>" hidden>
+              <h1 class="text-xl font-bold text-center">Registro de Ventas</h1>
+              
+              <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">selecciona una opcion</label>
+
+              <select id="data[i].vta_detalle_prod_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+                <% for(var i = 0; i< data.length; i++) { %>
+               
+                <option value=<%= data[i].prod_nombre%>   >  <%= data[i].prod_nombre%>    </option>
+               
+              
+              <!-- <option value="CA">tramite ordinaria</option>
+              <option value="FR">solicitud</option>
+              <option value="DE">otros</option> 
+              <%=data[i].prod_id%> <%= data[i].prod_nombre%> -->
+                <% } %>
                 
-               <div class="mb-3">
-                 <label for="prod_id" class="form-label">producto</label>
-                 
-
-                 <select name="prod_nombre">
-                    <option value ="prod_id"></option>
-                   
-
-                 </select>
-               </div>                                                              
-               <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
-               <a href="/" class="btn btn-secondary">Cancelar</a>
-           </form>   
+              </select>
+              <div>
+                <% if (messages.error) { %>
+                <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+                <% } %>
+              
+                  <form class="w-full max-w-lg" action="/sales/add" method="post">
+                      <div class="flex flex-wrap -mx-3 mb-6">
+                        <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                              Nombre
+                          </label>
+                          <input name="prod_nombre" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del producto">
+                        </div> -->
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                              Cantidad
+                          </label>
+                          <input name="vta_detalle_cantidad" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del producto">
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                              Precio U.
+                          </label>
+                          <input name="vta_detalle_precio_unit" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del producto">
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                              Importe
+                          </label>
+                          <input name="vta_detalle_importe" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del producto">
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                              Total
+                          </label>
+                          <input name="vta_detalle_total" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del producto">
+                        </div>
+                      </div>
+                      <input type="submit" class="flex justify-around mt-4 mb-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Agregar"/>
+                    </form>
+              </div>
+             
+            
+            </div>
+            <table class="content-center table-auto">
+             
+              <thead class="border-b bg-gray-800">
+                  <tr>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">#</th>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nombre</th>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">Cantidad</th>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">Precio U</th>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">Importe</th>
+                      <th scope="col" class="text-sm font-medium text-white px-6 py-4">Total</th>
+                    
+                  </tr>
+              </thead class="border-b">
+              <tbody>
+              <% for(var i = 0; i< data.length; i++) { %>
+                  <tr class="bg-white border-b">
+                      <th class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= (i+1) %></th>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].prod_nombre%></td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].vta_detalle_cantidad%></td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].vta_detalle_precio_unit%></td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].vta_detalle_importe%></td>
+                      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].vta_detalle_total%></td>
+                      
+                      <!-- <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                          <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../products/edit/<%=data[i].prod_id%>">Editt</a>                       
+                          <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="return alert('Are You sure?')" href="../products/delete/<%=data[i].prod_id%>">Del</a>
+                      </td> -->
+                  </tr>
+              <% } %>
+              </tbody>
+          </table>
+              <form class="w-full max-w-lg" action="#" method="post">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Nombre
+                    </label>
+                    <input name="prod_nombre" value="" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nombre del cliente">
+                  </div>
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Grado
+                    </label>
+                    <input name="prod_codigo" value="" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Grado">
+                  </div>
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Seccion
+                    </label>
+                    <input name="prod_unidad_precio" value="" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Seccion">
+                  </div>
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Nivel
+                    </label>
+                    <input name="prod_unidad_precio" value="" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Nivel">
+                  </div>
+                </div>
+                <input type="#" class="items-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" value="Generar Venta"/>
+              </form>
+              
+     
+      
           
     
     
-
+</div>
 </div>
 </div>
 </div>

@@ -1,5 +1,7 @@
 <%- include('../partials/header'); %>
+
 <div class="relative md:ml-64 bg-blueGray-50">
+    
     <% if (messages.success) { %>
     <div class="alert alert-success" role="alert"><%- messages.success %></div>
     <% } %>
@@ -12,6 +14,7 @@
         <h1 class="text-xl font-bold">Lista de Usuarios</h1>
         <a class="bg-green-600 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" href="/crudusers/add">Nuevo Usuario</a>
     </div>
+    
     <div class="card-body">
         
         <% if(data.length) { %>
@@ -19,6 +22,13 @@
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
+                        <h1>Search list</h1>
+                        <form class="mb-5" action="/add">
+                            <input type="search" name="nombre" placeholder="Search Name">
+                            <input type="search" name="email" placeholder="Search email">
+                            <input type="search" name="Cargo" placeholder="Search Cargo">
+                            <input class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit" value=" Search">
+                        </form>
         <table class="content-center">
              
             <thead class="border-b bg-gray-800">
@@ -41,8 +51,8 @@
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><%= data[i].Cargo%></td>
                     
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../workers/edit/<%=data[i].tra_id%>">Editt</a>                       
-                        <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="return alert('Are You sure?')" href="../workers/delete/<%=data[i].tra_id%>">Del</a>
+                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="../crudusers/edit/<%=data[i].id%>">Editt</a>                       
+                        <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="return alert('Are You sure?')" href="../crudusers/delete/<%=data[i].id%>">Del</a>
                     </td>
                 </tr>
             <% } %>
@@ -58,7 +68,7 @@
         
         <!-- if result is empty -->
         <% if(!data.length) { %>
-            <p class="text-center">No productos found!</p>
+            <p class="text-center">No users found!</p>
         <% } %>
 
         </div>
