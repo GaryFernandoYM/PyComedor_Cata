@@ -693,6 +693,9 @@ video {
 .mr-0 {
   margin-right: 0px;
 }
+.mt-0 {
+  margin-top: 0px;
+}
 .block {
   display: block;
 }
@@ -982,10 +985,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
-.bg-green-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
-}
 .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
@@ -1102,9 +1101,6 @@ video {
 }
 .pl-10 {
   padding-left: 2.5rem;
-}
-.pt-20 {
-  padding-top: 5rem;
 }
 .text-left {
   text-align: left;

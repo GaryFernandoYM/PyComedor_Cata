@@ -1,12 +1,13 @@
 <%- include('../partials/header'); %>
 
 
-<div class="relative flex flex-col sm:justify-center items-center bg-green-100  md:ml-64 bg-blueGray-50">
+<div class="relative flex flex-col sm:justify-center items-center md:ml-64 bg-blueGray-50">
     
 
 
 
 <% if(data.length) { %>
+  <script src="https://cdn.tailwindcss.com"></script>
     <div class="flex justify-around ">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
@@ -15,7 +16,7 @@
               
               <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">selecciona una opcion</label>
 
-              <select id="data[i].vta_detalle_prod_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+              <select id="data[i].vta_detalle_prod_id" class="bg-gray-50 border border-gray-300 mb-10 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
                 <% for(var i = 0; i< data.length; i++) { %>
                
                 <option value=<%= data[i].prod_nombre%>   >  <%= data[i].prod_nombre%>    </option>
